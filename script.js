@@ -163,12 +163,7 @@ var typedChar;
 (function() {
   var method;
   var noop = function noop() {};
-  var methods = [
-    'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-    'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-    'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-    'timeStamp', 'trace', 'warn'
-  ];
+  var methods = ['assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error', 'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'];
   var length = methods.length;
   var console = (window.console = window.console || {});
   while (length--) {
@@ -255,21 +250,11 @@ function setCaretPosition(ctrl, pos) {
       'o': 'ω{𝔬}∨°',
       'p': 'πϕφψ{𝔭}',
       'q': '{𝔮}∎',
-
       'r': 'ρ{𝔯}',
       's': 'σ{𝔰}√∛∜∑∵',
-
       't': 'τθ{𝔱}∴',
-
-
-
-
       'u': 'υ{𝔲}',
-
-
-
       'v': 'ʋ',
-
       'w': 'ω⚠',
       'x': 'ξ×⨉⊗',
       'y': '',
@@ -282,36 +267,21 @@ function setCaretPosition(ctrl, pos) {
       '+': '±∓⊕₊⁺',
       '-': '⁻‾⏞', //⏜⎴
       '\'': '\u0301\u0304\u0307\u0309\u030A\u20f0',
-
-
       '`': '\u0300', //\u20d0\u20d1\u20ec\u20ed',
       '~': '\u0303\u0330',
       '"': '\u0308\u20db\u20dc\u20e8\u20e1\u20e7\u20e9\u0331',
       '_': '₋▁\u23DF', //┬⏝⎵
       '{': '❴⟨⌈⌊⟪⟦⦇⦉',
-
-
       '}': '❵⟩⌉⌋⟫⟧⦈⦊',
       '[': '❴⟨⌈⌊⟮⟪⟦⦇⦉',
       ']': '❵⟩⌉⌋⟯⟫⟧⦈⦊',
-
-
-
-
       '|': '∣∤∥∦',
       '\\': '∖',
-
-
       '/': '∕÷¦',
       '<': '≤⟨⊆⊂←↤⇐⊲',
       '>': '≥⟩⊇⊃→↦⇒⟹⊳',
       '=': '≠≈≅≃≡⟺⇔≟≝≔≞⇕',
-
-
       '1': '¹₁',
-
-
-
       '2': '²₂',
       '3': '³₃',
       '4': '⁴₄',
@@ -350,12 +320,9 @@ function setCaretPosition(ctrl, pos) {
     });
 
     function onKeyDown(e) {
-
       activeElement = e.target;
-
       var font = $(activeElement).css('font-family');
       var hasSTIX = /STIX/g.test(font);
-
       if (!hasSTIX) {
         $(activeElement).css('font-family', font + "Cambria Math, STIXGeneral,Latin Modern Roman");
       }
@@ -729,8 +696,7 @@ $(function() {
         pre = document.createTextNode(str.substring(0, caretPos)),
         post = document.createTextNode(str.substring(caretPos)),
         $car = $('<span/>').addClass(caretClass).css('position', 'absolute').html('&nbsp;');
-      this.$mirror.append(pre, $car, post)
-        .scrollTop(this.$text.scrollTop());
+      this.$mirror.append(pre, $car, post).scrollTop(this.$text.scrollTop());
     };
     this.destroy = function() {
       this.$mirror.remove();
