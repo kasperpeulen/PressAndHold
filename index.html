@@ -18,7 +18,7 @@
             <script type="text/javascript">
                 $(function() {
                   function makePreview() {
-                  input = $('#ta').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                  input = $('#ta').val().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g,"<br>");
                   $('#preview').html(input);
                   MathJax.Hub.Queue(["Typeset", MathJax.Hub, "preview"]);
                   }
