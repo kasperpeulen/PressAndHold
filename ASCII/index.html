@@ -1,0 +1,64 @@
+<html><head>
+    <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+            
+            <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+            <script src="unicode2latex.js"></script>
+            <script src="script.js"></script>
+   <script type="text/x-mathjax-config">
+                    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+                                        tex2jax: { inlineMath: [ ["$", "$"], ["\\\\(","\\\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+                                        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+                                        messageStyle: "none"
+                });
+                </script>        
+            <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>  
+
+
+            <script type="text/javascript">
+                $(function() {
+                  function makePreview() {
+                  input = $('#ta').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                  $('#preview').html(input);
+                  MathJax.Hub.Queue(["Typeset", MathJax.Hub, "preview"]);
+                  }
+                  $('body').keyup(function() {
+                                  makePreview()
+                                  });
+                  $('body').bind('updated', function() {
+                                 makePreview()
+                                 });
+                  makePreview();
+                  });
+                </script>
+<body>
+    <textarea id="ta" placeholder="Press and hold a key to select a math symbol. For example, hold R to get ‚α or a to get ℝ. Wrap the symbol in $...$ to get LaTeX output." style="font-family: Consolas, 'DejaVu Sans', Symbola, Quivira, 'Segoe UI Symbol', UniversaliaPlus, Menlo, Monaco, 'Lucida Console', h, 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, 'serifCambria Math', STIXGeneral, 'Latin Modern Roman';"></textarea><div style="position: absolute; overflow: auto; white-space: pre-wrap; word-wrap: break-word; top: 0px; left: -9999px; box-sizing: content-box; height: 200px; width: 500px; padding: 5px; font-family: Consolas, 'DejaVu Sans', Symbola, Quivira, 'Segoe UI Symbol', UniversaliaPlus, Menlo, Monaco, 'Lucida Console', h, 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, 'serifCambria Math', STIXGeneral, 'Latin Modern Roman'; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; line-height: normal; text-decoration: none; text-indent: 0px; text-transform: none; direction: ltr;">=<span class="textarea-helper-caret" style="position: absolute;">&nbsp;</span></div>
+    
+    <br>
+    
+    <p><strong>Mathjax Output (use \$...\$ to get $\LaTeX$ output):</strong>
+    </p>
+    <div id="preview"></div>
+    <script>
+      
+      
+    </script>
+
+    <p>Drag this link to you bookmarks, to use this app at other websites as a bookmarklet script: <a href="">Press and Hold</a>
+</p>
+<p>Press and hold 'a' to get: <br>
+</p><ul class="popup-preview"><li class="" title="\alpha " style="padding-top: 0px;">α<span class="number">1</span></li><li class="" title="\forall " style="padding-top: 0px;">∀<span class="number">2</span></li><li class="" title="\wedge " style="padding-top: 0px;">∧<span class="number">3</span></li><li class="" title="\angle " style="padding-top: 0px;">∠<span class="number">4</span></li><li class="" title="\mathfrak{a}" style="padding-top: 0px;">𝔞<span class="number">5</span></li></ul>
+<p></p>
+<p>Press and hold '=' to get:'<br></p><ul class="popup-preview"><li class="" title="\neq " style="padding-top: 0px;">≠<span class="number">1</span></li><li class="" title="\approx " style="padding-top: 0px;">≈<span class="number">2</span></li><li class="" title="\cong " style="padding-top: 0px;">≅<span class="number">3</span></li><li class="" title="\simeq " style="padding-top: 0px;">≃<span class="number">4</span></li><li class="" title="\equiv " style="padding-top: 0px;">≡<span class="number">5</span></li><li class="" title="\Longleftrightarrow " style="padding-top: 0px;">⟺<span class="number">6</span></li><li class="" title="\Leftrightarrow " style="padding-top: 0px;">⇔<span class="number">7</span></li><li class="" title="\stackrel{\text{?}}{=}" style="padding-top: 0px;">≟<span class="number">8</span></li><li class="" title="\stackrel{\tiny\text{def}}{=}" style="padding-top: 0px;">≝<span class="number">9</span></li><li class="" title=":=" style="padding-top: 0px;">≔<span class="number">10</span></li><li class="" title="\stackrel{\text{m}}{=}" style="padding-top: 0px;">≞<span class="number">11</span></li><li class="" title="\Updownarrow " style="padding-top: 0px;">⇕<span class="number">12</span></li></ul>
+<p></p>
+<p>Press and hold "*" to get:<br>
+</p><ul class="popup-preview"><li class="" title="\cdot " style="padding-top: 0px;">·<span class="number">1</span></li><li class="" title="\circ " style="padding-top: 0px;">∘<span class="number">2</span></li><li class="" title="\bullet " style="padding-top: 0px;">∙<span class="number">3</span></li><li class="" title="\diamond " style="padding-top: 0px;">⋄<span class="number">4</span></li><li class="" title="\times " style="padding-top: 0px;">×<span class="number">5</span></li><li class="" title="" style="padding-top: 0px;">⨉<span class="number">6</span></li><li class="" title="\otimes " style="padding-top: 0px;">⊗<span class="number">7</span></li><li class="" title="\odot " style="padding-top: 0px;">⊙<span class="number">8</span></li><li class="" title="\bigodot " style="padding-top: 0px;">⨀<span class="number">9</span></li></ul>
+<p></p>
+<p>Press and hold '&gt;' to get:<br>
+</p><ul class="popup-preview"><li class="" title="\geq " style="padding-top: 0px;">≥<span class="number">1</span></li><li class="" title="\rangle " style="padding-top: 0px;">⟩<span class="number">2</span></li><li class="" title="\supseteq " style="padding-top: 0px;">⊇<span class="number">3</span></li><li class="" title="\supset " style="padding-top: 0px;">⊃<span class="number">4</span></li><li class="" title="\rightarrow " style="padding-top: 0px;">→<span class="number">5</span></li><li class="" title="\mapsto " style="padding-top: 0px;">↦<span class="number">6</span></li><li class="" title="\Rightarrow " style="padding-top: 0px;">⇒<span class="number">7</span></li><li class="" title="\Longrightarrow " style="padding-top: 0px;">⟹<span class="number">8</span></li><li class="" title="\vartriangleright " style="padding-top: 0px;">⊳<span class="number">9</span></li></ul>
+<p></p>
+
+
+
+
+</body></html>
