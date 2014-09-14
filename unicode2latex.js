@@ -901,7 +901,7 @@ var unicode_to_latex = {
     "\u2217": "{_\\ast}",
     "\u2218": "\\circ ",
     "\u2219": "\\bullet ",
-    "\u221A": "\\surd ",
+    "\u221A": "\\sqrt ",
     "\u221D": "\\propto ",
     "\u221E": "\\infty ",
     "\u221F": "\\rightangle ",
