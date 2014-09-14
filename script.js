@@ -373,6 +373,14 @@ function setCaretPosition(ctrl, pos) {
           $(activeElement).val(textAreaTxt.substring(0, caretPos) + '`' + textAreaTxt.substring(caretPos));
           setCaretPosition(activeElement, caretPos + 1);
         }
+        if (e.which == 54 && e.shiftKey === true && ($('.long-press-popup').length <= 0)) {
+          e.preventDefault();
+          activeElement = e.target;
+          var textAreaTxt = $(activeElement).val();
+          var caretPos = getCaretPosition(activeElement);
+          $(activeElement).val(textAreaTxt.substring(0, caretPos) + '^' + textAreaTxt.substring(caretPos));
+          setCaretPosition(activeElement, caretPos + 1);
+        }        
         var oldcount = count;
         setTimeout(function() {
           if (!keyup && (oldcount === count)) {
