@@ -326,7 +326,6 @@ function setCaretPosition(ctrl, pos) {
       if (!hasSTIX) {
         $(activeElement).css('font-family', font + "Cambria Math, STIXGeneral,Latin Modern Roman");
       }
-      console.log($(activeElement).css('font-family'));
       if ($('.long-press-popup').length <= 0) {
         keyup = false;
         count += 1;
@@ -584,7 +583,6 @@ function setCaretPosition(ctrl, pos) {
           }
           $(activeElement).val($(activeElement).val().replace(a, unicode_to_latex[a]));
         }
-        console.log("1");
         var newstr = $(activeElement).val();
         setCaretPosition(activeElement, pos + newstr.length - oldstr.length);
       }
@@ -724,7 +722,6 @@ $(function() {
     this.height = function() {
       this.update();
       this.$mirror.css('height', '');
-      console.log(this.$mirror.height());
       return this.$mirror.height();
     };
     this.getOriginalCaretPos = function() {
