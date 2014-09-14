@@ -786,7 +786,7 @@ var unicode_to_latex = {
     "\u210A": "\\mathscr{g}",
     "\u210D": "\\mathbb{H}",
     "\u210F": "\\hslash ",
-    "\u2113": "\\ell",
+    "\u2113": "\\ell ",
     "\u2115": "\\mathbb{N}",
     "\u2116": "\\cyrchar\\textnumero ",
     "\u2118": "\\wp ",
