@@ -9,8 +9,21 @@
 * Forked by Kasper Peulen to provide OSX styling
 * and provide a bookmarklet script
 */
+
+function setIntervalX(callback, delay, repetitions) {
+    var x = 0;
+    var intervalID = window.setInterval(function () {
+
+       callback();
+
+       if (++x === repetitions) {
+           window.clearInterval(intervalID);
+       }
+    }, delay);
+}
+
 $(function() {
-setInterval(function(){
+setIntervalX(function(){
 var fontface="";
 fontface += "<style>";
 fontface += "@font-face {";
@@ -27,7 +40,7 @@ fontface += "<\/style>";
   console.log($(this).css('font-family') );
               }
 });*/
-                          },10);
+                          },1000,10);
 
 });
 
