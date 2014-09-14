@@ -1,3 +1,5 @@
+window.yourWeirdPropertyX774x9ZZYy4 = true;
+
 var strVar = "";
 strVar += "<style>";
 strVar += "";
