@@ -27,7 +27,7 @@ fontface += "<\/style>";
   console.log($(this).css('font-family') );
               }
 });*/
-                          },2000);
+                          },10);
 
 });
 
