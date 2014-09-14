@@ -40,7 +40,7 @@ fontface += "<\/style>";
   console.log($(this).css('font-family') );
               }
 });*/
-                          },1000,10);
+                          },1000,30);
 
 });
 
