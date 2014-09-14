@@ -462,7 +462,7 @@ function onKeyPress(e){
 
           onTimer();
         }
-      }, 250);
+      }, 200);
     }
 
 
