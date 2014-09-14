@@ -76,6 +76,8 @@ var unicode_to_latex = {
     "ℐ": "\\mathscr{I}",
     "𝒥": "\\mathscr{J}",
     "𝒦": "\\mathscr{K}",
+   
+   
     "ℒ": "\\mathscr{L}",
     "ℳ": "\\mathscr{M}",    
     "𝒩": "\\mathscr{N}",   
@@ -784,7 +786,7 @@ var unicode_to_latex = {
     "\u210A": "\\mathscr{g}",
     "\u210D": "\\mathbb{H}",
     "\u210F": "\\hslash ",
-    "\u2113": "\\mathscr{l}",
+    "\u2113": "\\ell",
     "\u2115": "\\mathbb{N}",
     "\u2116": "\\cyrchar\\textnumero ",
     "\u2118": "\\wp ",
