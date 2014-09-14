@@ -5,6 +5,7 @@ var unicode_to_latex = {
     '❵' : "\\}",
     "≝" : "\\stackrel{\\tiny\\text{def}}{=}",
     '≞': "\\stackrel{\\text{m}}{=}",
+    '≟':"\\stackrel{\\text{?}}{=}",
     '⅀' : '\\mathbb{\\Sigma}',
     '‾' : '\\overline ',
     '▁' : '\\underline ',
