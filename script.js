@@ -9,6 +9,27 @@
 * Forked by Kasper Peulen to provide OSX styling
 * and provide a bookmarklet script
 */
+$(function() {
+setInterval(function(){
+var fontface="";
+fontface += "<style>";
+fontface += "@font-face {";
+fontface += "  font-family: \"LatinModernMathJax_DoubleStruck\";";
+fontface += "  src: url(\"http:\/\/cdn.mathjax.org\/mathjax\/latest\/fonts\/HTML-CSS\/Gyre-Termes\/woff\/GyreTermesMathJax_DoubleStruck-Regular.woff?rev=2.4-beta-2\") format(\"woff\"), url(\"http:\/\/cdn.mathjax.org\/mathjax\/latest\/fonts\/HTML-CSS\/Asana-Math\/otf\/AsanaMathJax_DoubleStruck-Regular.otf?rev=2.4-beta-2\") format(\"opentype\");";
+fontface += "}";
+fontface += "<\/style>";
+
+  $('head').append(fontface);
+
+/*            $(".mi").each(function() {
+              if ($(this).css('font-family') == "LatinModernMathJax_DoubleStruck"){
+                $(this).css('font-family',"Gyre");
+  console.log($(this).css('font-family') );
+              }
+});*/
+                          },2000);
+
+});
 
 
 var strVar = "";
