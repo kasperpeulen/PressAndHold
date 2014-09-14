@@ -314,7 +314,7 @@ function setCaretPosition(ctrl, pos) {
     $(window).mousewheel(onWheel);
     $(window).keyup(onKeyUp);
     $(window).on('keypress', function(e) {
-      if (e.which === 39 || e.which == 34 || e.which == 96 || e.which == 126) {
+      if (e.which === 39 || e.which == 34 || e.which == 96 || e.which == 94 || e.which == 126) {
         e.preventDefault();
       }
     });
