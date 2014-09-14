@@ -770,7 +770,7 @@ var unicode_to_latex = {
   //'\u20ED':'\\underleftharpoondown',
   '\u20EE': '\\underleftarrow',
   '\u20EF': '\\underrightarrow',
-  '\u20f0': '\\asteraccent',
+  //'\u20f0': '\\asteraccent',
   "\u2102": "\\Bbb{C}",
   "\u210A": "\\mathcal{g}",
   "\u210D": "\\Bbb{H}",
