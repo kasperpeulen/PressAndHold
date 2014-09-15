@@ -918,7 +918,7 @@ var unicode_to_latex = {
   "\u2234": "\\therefore ",
   "\u2235": "\\because ",
   "\u2236": ":",
-  "\u2237": "\\Colon ",
+ // "\u2237": "\\Colon ",
   "\u2238": "\\ElsevierGlyph{2238}",
   "\u223A": "\\mathbin{{:}\\!\\!{-}\\!\\!{:}}",
   "\u223B": "\\homothetic ",
