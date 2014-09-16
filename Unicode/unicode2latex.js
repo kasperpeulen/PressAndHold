@@ -1,3 +1,5 @@
+window.pressandholdpeulen = true;
+
 var unicode_to_latex = {
     "∕" : "\\over ",
     "¦" : "\\choose ",
