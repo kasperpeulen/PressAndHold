@@ -7,11 +7,11 @@ body{
 	height: 200px;
 	font-size: 18px;
 	padding:5px;
-font-family: "LMMath-bbfix", Consolas,  DejaVu Sans, Symbola, Quivira, Segoe UI Symbol, UniversaliaPlus, Menlo,Monaco,Lucida Console , h ,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif,"Latin Modern Math",Cambria Math,  STIXGeneral;
+font-family: "LMMath-bbfix", Cambria Math,  STIXGeneral,Consolas,  DejaVu Sans, Symbola, Quivira, Segoe UI Symbol, UniversaliaPlus, Menlo,Monaco,Lucida Console , h ,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif,"Latin Modern Math";
 }
 
 #preview{
-font-family:"LMMath-bbfix", Georgia,Times New Roman",Times,serif,"Latin Modern Math",Cambria Math,STIXGeneral;
+font-family:"LMMath-bbfix", Cambria Math,STIXGeneral,Georgia,Times New Roman",Times,serif,"Latin Modern Math";
   font-size:13pt;
 }
 @font-face {
