@@ -214,6 +214,12 @@
             <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML-full">
                 </script>
             <script type="text/javascript">
+                function escapeRegExp(string) {
+                    return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+                }
+                function replaceAll(string, find, replace) {
+                    return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+                }
                 $(function() {
                   function makePreview() {
                   input = $('#latex').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -261,7 +267,7 @@
                               }
 
 
-                              $('#latex').val($('#latex').val().replace(a, unicode_to_latex[a]));
+                              $('#latex').val(replaceAll($('#latex').val(),a, unicode_to_latex[a]));
                           }
                       }                  function makePreview() {
                           input = $('#latex').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
