@@ -82,5 +82,20 @@ for (var a in unicode_to_latex) {
 
 
     $('#latex').val(replaceAll($('#latex').val(),a, unicode_to_latex[a]));
+
+
 }
+    var textarea = $('#latex').val();
+    var re = /\^(\d)\^(\d)\^(\d)\^(\d)/g;
+    var subst = '^{$1$2$3$4}';
+    textarea = textarea.replace(re, subst);
+
+    var re = /\^(\d)\^(\d)\^(\d)/g;
+    var subst = '^{$1$2$3}';
+    textarea = textarea.replace(re, subst);
+
+    var re = /\^(\d)\^(\d)/g;
+    var subst = '^{$1$2}';
+    textarea = textarea.replace(re, subst);
+    $('#latex').val(textarea);
 }
