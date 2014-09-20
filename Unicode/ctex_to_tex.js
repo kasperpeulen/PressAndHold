@@ -26,6 +26,11 @@ var textarea = textarea.replace(re, subst);
     var subst = '\\underset{$4$5$6}{$1$2$3}';
     var textarea = textarea.replace(re, subst);
 
+    var re = /"([^"]+)"/g;
+    var subst = '\\text{$1}';
+
+    var textarea = textarea.replace(re, subst);
+
     var text = textarea.split('');
 for (var index = 0; index < text.length; index++) {
        if (text[index] === "⁅") {
