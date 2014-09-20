@@ -247,17 +247,33 @@
                                   var text = textarea.split('');
                                   for (var index = 0; index < text.length; index++) {
                                       if (text[index] === "∕") {
-                                          if (text[index-1] !== "}") {
-                                              text[index - 1] = "\\frac{" + text[index - 1] + "}";
-                                              text[index]="";
-                                          }
-                                          else {
+                                          if (text[index-1] == "}")   {
                                               var sub=  textarea.substring(0,index)
                                               var startindex = sub.lastIndexOf("{");
                                               text[startindex] = "\\frac" + text[startindex];
                                               text[index]="";
                                           }
-                                          if (text[index+1] !== "{") {
+                                          else if (text[index-1] == ")") {
+                                              text[index-1] = "}"
+                                              var sub=  textarea.substring(0,index)
+                                              var startindex = sub.lastIndexOf("(");
+                                              text[startindex] = "\\frac{" ;
+                                              text[index]="";
+                                          }
+                                          else {
+                                              text[index - 1] = "\\frac{" + text[index - 1] + "}";
+                                              text[index]="";
+                                          }
+
+                                          if (text[index+1] == "(") {
+                                              text[index+1] = "{"
+                                              var sub=  textarea.substring(index);
+                                              var endindex = sub.indexOf(")");
+                                              console.log(sub,endindex);
+                                              text[index+ endindex] = "}" ;
+                                          }
+
+                                          else if (text[index+1] !== "{") {
                                               text[index +1] = "{"+ text[index+1] +"}";
                                           }
 
