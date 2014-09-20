@@ -7,7 +7,32 @@
             <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
             <script src="unicode2latex.js"></script>
             <script src="script.js"></script>
+
+
             <script type="text/x-mathjax-config">
+
+                                         MathJax.Hub.Config({
+          asciimath2jax: {delimiters: [['`','`'],['``','``']]},
+          AsciiMath: {displaystyle: false}
+        });
+    MathJax.Hub.Register.LoadHook("[MathJax]/extensions/asciimath2jax.js", function () {
+    var AM = MathJax.Extension.asciimath2jax,
+    CREATEPATTERNS = AM.createPatterns;
+    AM.createPatterns = function () {
+    var result = CREATEPATTERNS.call(this);
+    this.match['``'].mode = ";mode=display";
+    return result;
+    };
+    });
+    MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+    var AM = MathJax.InputJax.AsciiMath;
+    AM.postfilterHooks.Add(function (data) {
+    if (data.script.type.match(/;mode=display/)) {
+    data.math.root.display = "block"
+    }
+    return data;
+    });
+    });
                 MathJax.Hub.Register.StartupHook("TeX Jax Ready", function() {
                                                  var TEX = MathJax.InputJax.TeX;
                                                  var MACROS = {
@@ -201,18 +226,12 @@
                                    },
                                    messageStyle: "none"
                                    });
-                         MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
-  var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
- console.log(VARIANT);
-  console.log(VARIANT["double-struck"].fonts);
-  VARIANT["double-struck"].fonts.unshift("STIXGeneral");
-  
-  console.log(VARIANT["double-struck"].fonts);
-});               
-        
+
                 </script>
             <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML-full">
                 </script>
+    <script type="text/x-mathjax-config">
+ </script>
             <script type="text/javascript">
                 function escapeRegExp(string) {
                     return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
@@ -230,6 +249,73 @@
                       //$('#latex').val($('#ta').val());
                       if (true) {
                           $('#latex').val($('#ta').val());
+
+                          var textarea = $('#latex').val();
+                          var text = textarea.split('');
+                          for (var index = 0; index < text.length; index++) {
+                              if (text[index] === "∕") {
+                                  if (text[index-1] == "}")   {
+                                      var sub=  textarea.substring(0,index)
+                                      var startindex = sub.lastIndexOf("{");
+                                      text[startindex] = "\\frac" + text[startindex];
+                                      text[index]="";
+                                  }
+                                  else if (text[index-1] == ")") {
+                                      text[index-1] = "}"
+                                      var sub=  textarea.substring(0,index)
+                                      var startindex = sub.lastIndexOf("(");
+                                      text[startindex] = "\\frac{" ;
+                                      text[index]="";
+                                  }
+                                  else {
+                                      text[index - 1] = "\\frac{" + text[index - 1] + "}";
+                                      text[index]="";
+                                  }
+
+                                  if (text[index+1] == "(") {
+                                      text[index+1] = "{"
+                                      var sub=  textarea.substring(index);
+                                      var endindex = sub.indexOf(")");
+                                      console.log(sub,endindex);
+                                      text[index+ endindex] = "}" ;
+                                  }
+
+                                  else if (text[index+1] !== "{") {
+                                      text[index +1] = "{"+ text[index+1] +"}";
+                                  }
+
+                                  $('#latex').val(text.join(''));
+                              }
+                              else if (text[index] === "⁅") {
+                                  var sub=  textarea.substring(index);
+                                  var endindex = sub.indexOf("⁆");
+                                  var endindex2 = sub.indexOf("⁅");
+                                  if (endindex !==-1 &&  endindex2 < endindex) {
+                                      var innermath = sub.substring(0, endindex);
+                                      console.log(index,endindex,textarea,sub,innermath,innermath.indexOf("&"));
+                                      if (innermath.indexOf("&") !== -1 ){
+
+                                          text[index+endindex]= "\\end{align*}" ;
+                                          text[index]= "\\begin{align*}" ;
+                                      }
+                                      else if (innermath.indexOf("\\") !== -1 ){
+
+
+                                          text[index+endindex]= "\\end{gather*}" ;
+                                          text[index]= "\\begin{gather*}" ;
+                                      }
+                                      else if (innermath.indexOf("((") !== -1 ){
+                                          text[index+endindex]= "``" ;
+                                          text[index]= "``" ;
+
+
+                                      }
+                                  }
+
+                              }
+                              $('#latex').val(text.join(''));
+                          }
+
                           for (var a in unicode_to_latex) {
                               if (/[\u0300-\u036e\u1dc0-\u1dfe\u20d0-\u20fe\ufe20-\ufe2e]/.test(a)) {
                                   var newstr = unicode_to_latex[a];
@@ -240,45 +326,6 @@
                                       text[index] = "{" + text[index - 1] + "}";
                                       text[index - 1] = a;
                                       $('#latex').val(text.join(''));
-                                  }
-                              }
-                              else if (/[∕]/.test(a)) {
-                                  var textarea = $('#latex').val();
-                                  var text = textarea.split('');
-                                  for (var index = 0; index < text.length; index++) {
-                                      if (text[index] === "∕") {
-                                          if (text[index-1] == "}")   {
-                                              var sub=  textarea.substring(0,index)
-                                              var startindex = sub.lastIndexOf("{");
-                                              text[startindex] = "\\frac" + text[startindex];
-                                              text[index]="";
-                                          }
-                                          else if (text[index-1] == ")") {
-                                              text[index-1] = "}"
-                                              var sub=  textarea.substring(0,index)
-                                              var startindex = sub.lastIndexOf("(");
-                                              text[startindex] = "\\frac{" ;
-                                              text[index]="";
-                                          }
-                                          else {
-                                              text[index - 1] = "\\frac{" + text[index - 1] + "}";
-                                              text[index]="";
-                                          }
-
-                                          if (text[index+1] == "(") {
-                                              text[index+1] = "{"
-                                              var sub=  textarea.substring(index);
-                                              var endindex = sub.indexOf(")");
-                                              console.log(sub,endindex);
-                                              text[index+ endindex] = "}" ;
-                                          }
-
-                                          else if (text[index+1] !== "{") {
-                                              text[index +1] = "{"+ text[index+1] +"}";
-                                          }
-
-                                          $('#latex').val(text.join(''));
-                                      }
                                   }
                               }
 
