@@ -2461,5 +2461,15 @@ var unicode_to_latex = {
   "\uD7FC": "\\mathtt{6}",
   "\uD7FD": "\\mathtt{7}",
   "\uD7FE": "\\mathtt{8}",
-  "\uD7FF": "\\mathtt{9}"
+  "\uD7FF": "\\mathtt{9}",
+   "\uD835\uDC4E":"\\(a\\)",
+    "\uD835\uDC4F":"\\(b\\)",
+    "\uD835\uDC50":"\\(c\\)",
+    "\uD835\uDC51":"\\(d\\)",
+    "\uD835\uDC52":"\\(e\\)",
+    "\uD835\uDC53":"\\(f\\)",
+    "\uD835\uDC54":"\\(g\\)",
+    "\uD835\uDC56":"\\(i\\)"s
+
+
 };
