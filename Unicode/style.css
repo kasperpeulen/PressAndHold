@@ -2,7 +2,7 @@ body{
   font-family:Georgia,"Times New Roman",Times,serif;
   font-size:14px;
 }
-#ta {
+#ta, #latex {
 	width: 500px;
 	height: 200px;
 	font-size: 18px;
@@ -10,6 +10,9 @@ body{
 font-family: "LMMath-bbfix", Cambria Math,  STIXGeneral,Consolas,  DejaVu Sans, Symbola, Quivira, Segoe UI Symbol, UniversaliaPlus, Menlo,Monaco,Lucida Console , h ,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif,"Latin Modern Math";
 }
 
+#latex {
+    visibility: hidden;
+}
 #preview{
     font-family: "LMMath-bbfix", Cambria Math,  STIXGeneral,Consolas,  DejaVu Sans, Symbola, Quivira, Segoe UI Symbol, UniversaliaPlus, Menlo,Monaco,Lucida Console , h ,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif,"Latin Modern Math";
     font-size: 18px;

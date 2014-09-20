@@ -178,7 +178,8 @@
                                    tex2jax: {
                                    inlineMath: [
                                                 ["$", "$"],
-                                                ["\\(", "\\)"]
+                                                ["\\(", "\\)"],
+                                                ["⁅","⁆"]
                                                 ],
                                    displayMath: [
                                                  ["$$", "$$"],
@@ -210,16 +211,56 @@
 });               
         
                 </script>
-            <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+            <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML-full">
                 </script>
             <script type="text/javascript">
                 $(function() {
                   function makePreview() {
-                  input = $('#ta').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                  input = $('#latex').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
                   $('#preview').html(input);
                   MathJax.Hub.Queue(["Typeset", MathJax.Hub, "preview"]);
                   }
                   $('body').keyup(function() {
+                      //$('#latex').val($('#ta').val());
+                      if (true) {
+                          $('#latex').val($('#ta').val());
+                          for (var a in unicode_to_latex) {
+                              if (/[\u0300-\u036e\u1dc0-\u1dfe\u20d0-\u20fe\ufe20-\ufe2e]/.test(a)) {
+                                  var newstr = unicode_to_latex[a];
+                                  var textarea = $('#latex').val();
+                                  var index = textarea.indexOf(a);
+                                  if (index !== -1) {
+                                      var text = textarea.split('');
+                                      text[index] = "{" + text[index - 1] + "}";
+                                      text[index - 1] = a;
+                                      $('#latex').val(text.join(''));
+                                  }
+                              }
+                              else if (/[∕]/.test(a)) {
+                                  var textarea = $('#latex').val();
+                                  var text = textarea.split('');
+                                  for (var index = 0; index < text.length; index++) {
+                                      if (text[index] === "∕") {
+                                          if (text[index-1] !== "}") {
+                                              text[index - 1] = "\\frac{" + text[index - 1] + "}";
+                                          }
+                                          if (text[index+1] !== "{") {
+                                              text[index +1] = "{"+ text[index+1] +"}";
+                                              text[index]="";
+                                              $('#latex').val(text.join(''));
+                                          }
+                                      }
+                                  }
+                              }
+
+
+                              $('#latex').val($('#latex').val().replace(a, unicode_to_latex[a]));
+                          }
+                      }                  function makePreview() {
+                          input = $('#latex').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                          $('#preview').html(input);
+                          MathJax.Hub.Queue(["Typeset", MathJax.Hub, "preview"]);
+                      }
                                   makePreview()
                                   });
                   $('body').bind('updated', function() {
@@ -232,7 +273,7 @@
 
 <body>
     <textarea  id="ta" placeholder="Press and hold a key to select a math symbol. For example, hold R to get ℝ or a to get α. Wrap the symbol in $...$ to get LaTeX output."></textarea>
-    
+    <textarea id="latex"></textarea>
     <br>
     <input id="checkbox" type="checkbox" >ASCII Mode<br>
     

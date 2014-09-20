@@ -559,6 +559,7 @@ function setCaretPosition(ctrl, pos) {
         function hidePopup() {
             popup.detach();
             keyup = false;
+            /*
             var oldstr = $(activeElement).val();
             var pos = getCaretPosition(activeElement);
             if ($('#checkbox').prop('checked')) {
@@ -580,6 +581,7 @@ function setCaretPosition(ctrl, pos) {
                 var newstr = $(activeElement).val();
                 setCaretPosition(activeElement, pos + newstr.length - oldstr.length);
             }
+            */
         }
 
         function onWheel(e, delta, deltaX, deltaY) {
