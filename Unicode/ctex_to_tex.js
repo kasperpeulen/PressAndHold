@@ -14,7 +14,7 @@ while ((m=re.exec(textarea)) != null) {
     textarea = textarea.replace(m[0], m[1] + "{" + m[2] + "}" + m[3] + "{" + m[4] + "} ");
 }
 
-var re = /(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})\∕(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})/g;
+var re = /(?:([^{}()])|\((.+)\)|{(.+)})\∕(?:([^{}()])|\((.+)\)|{(.+)})/g;
 var subst = '\\frac{$1$2$3}{$4$5$6}';
 var textarea = textarea.replace(re, subst);
 
@@ -33,7 +33,12 @@ var textarea = textarea.replace(re, subst);
     var re = /"([^"]+)"/g;
     var subst = '\\text{$1}';
 
+
+
+
     var textarea = textarea.replace(re, subst);
+    textarea = textarea.replace(/log/g,"\\log");
+    textarea = textarea.replace(/ln/g,"\\ln");
 
     var text = textarea.split('');
 for (var index = 0; index < text.length; index++) {
