@@ -18,6 +18,10 @@ var re = /(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})\∕(?:([^{}()])|\(([^{}()]+)
 var subst = '\\frac{$1$2$3}{$4$5$6}';
 var textarea = textarea.replace(re, subst);
 
+    var re = /(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})¦(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})/g;
+    var subst = '\\binom{$1$2$3}{$4$5$6}';
+    var textarea = textarea.replace(re, subst);
+
     var re = /(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})↖(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})/g;
     var subst = '\\overset{$4$5$6}{$1$2$3}';
     var textarea = textarea.replace(re, subst);
