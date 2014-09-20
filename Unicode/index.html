@@ -259,8 +259,43 @@
                               if (m.index === re.lastIndex) {
                                   re.lastIndex++;
                               }
-
-                              textarea = textarea.replace(m[0],m[1]+"{"+m[2]+"}"+m[3]+"{"+m[4]+"} ");
+                              textarea = textarea.replace(m[0], m[1] + "{" + m[2] + "}" + m[3] + "{" + m[4] + "} ");
+                          }
+                          var re = /([^}]{1})(↙)([^{]{1})/g;
+                          var m;
+                          while ((m=re.exec(textarea)) != null) {
+                              if (m.index === re.lastIndex) {
+                                  re.lastIndex++;
+                              }
+                              console.log(m);
+                              textarea = textarea.replace(m[0],"\\underset{"+m[3]+"}{"+m[1]+"}");
+                          }
+                          var re = /({)([^\s{}]+?)(})(↙)({)([^\s{}]+?)(})/g;
+                          var m;
+                          while ((m=re.exec(textarea)) != null) {
+                              if (m.index === re.lastIndex) {
+                                  re.lastIndex++;
+                              }
+                              console.log(m);
+                              textarea = textarea.replace(m[0],"\\underset"+m[5]+m[6]+m[7]+m[1]+m[2]+m[3]);
+                          }
+                          var re = /([^}]{1})(↖)([^{]{1})/g;
+                          var m;
+                          while ((m=re.exec(textarea)) != null) {
+                              if (m.index === re.lastIndex) {
+                                  re.lastIndex++;
+                              }
+                              console.log(m);
+                              textarea = textarea.replace(m[0],"\\overset{"+m[3]+"}{"+m[1]+"}");
+                          }
+                          var re = /({)([^\s{}]+?)(})(↖)({)([^\s{}]+?)(})/g;
+                          var m;
+                          while ((m=re.exec(textarea)) != null) {
+                              if (m.index === re.lastIndex) {
+                                  re.lastIndex++;
+                              }
+                              console.log(m);
+                              textarea = textarea.replace(m[0],"\\overset"+m[5]+m[6]+m[7]+m[1]+m[2]+m[3]);
                           }
                           var text = textarea.split('');
                           for (var index = 0; index < text.length; index++) {

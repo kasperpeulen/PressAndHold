@@ -820,7 +820,6 @@ var unicode_to_latex = {
   "\u2196": "\\nwarrow ",
   "\u2197": "\\nearrow ",
   "\u2198": "\\searrow ",
-  "\u2199": "\\swarrow ",
   "\u219A": "\\nleftarrow ",
   "\u219B": "\\nrightarrow ",
   "\u219C": "\\arrowwaveright ",

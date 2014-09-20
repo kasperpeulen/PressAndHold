@@ -286,7 +286,7 @@ function setCaretPosition(ctrl, pos) {
             '`': '\u0300\u20d0\u20d1\u20ec\u20ed',
             '~': '\u0303\u0330',
             '"': '\u0308\u20db\u20dc\u20e8\u20e1\u20e7\u20e9\u0331',
-            '_': '₋▁\u23DF', //┬⏝⎵
+            '_': '↙₋▁\u23DF', //┬⏝⎵
             '{': '❴⟨⌈⌊⟪⟦⦇⦉',
             '}': '❵⟩⌉⌋⟫⟧⦈⦊',
             '[': '⁅❴⟨⌈⌊⟮⟪⟦⦇⦉',
@@ -308,7 +308,7 @@ function setCaretPosition(ctrl, pos) {
             '9': '⁹₉',
             '0': '⁰₀',
             '*': '·∘∙⋄×⨉⊗⨀',
-            '^': '\u20ef\u20ee\u0302\u030C\u0306\u20d6\u20d7' //┴
+            '^': '↖\u20ef\u20ee\u0302\u030C\u0306\u20d6\u20d7' //┴
         };
         var ignoredKeys = [8, 13, 37, 38, 39, 40];
         var selectedCharIndex;
