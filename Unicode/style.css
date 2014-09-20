@@ -19,5 +19,5 @@ font-family: "LMMath-bbfix", Cambria Math,  STIXGeneral,Consolas,  DejaVu Sans, 
 }
 @font-face {
     font-family: LMMath-bbfix;
-    src: url(http://kasperpeulen.github.io/PressAndHold/LMMath-bbfix.otf);
+    src: url('/PressAndHold/LMMath-bbfix.otf');
 }

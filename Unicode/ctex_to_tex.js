@@ -14,32 +14,20 @@ while ((m=re.exec(textarea)) != null) {
     textarea = textarea.replace(m[0], m[1] + "{" + m[2] + "}" + m[3] + "{" + m[4] + "} ");
 }
 
-var re = /(?:([^{}()\[\]])|[\(\[\{](.+)[\)\]\}])∕(?:([^{}()\[\]])|[\(\[\{](.+)[\)\]\}])/g;
-var subst = '\\frac{$1$2}{$3$4}';
-var textarea = textarea.replace(re, subst);
+var binreg = function (symbol){
+    var reg = new RegExp("(?:([^{}()\\[\\]])|[\\(\\[\\{](.+)[\\)\\]\\}])"+symbol+"(?:([^{}()\\[\\]])|[\\(\\[\\{](.+)[\\)\\]\\}])","g");
+    return reg;
+}
 
-    var re = /(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})¦(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})/g;
-    var subst = '\\binom{$1$2$3}{$4$5$6}';
-    var textarea = textarea.replace(re, subst);
-
-    var re = /(?:([^{}()\[\]])|[\(\[\{](.+)[\)\]\}])↖(?:([^{}()\[\]])|[\(\[\{](.+)[\)\]\}])/g;
-    var subst = '\\overset{$3$4}{$1$2}';
-    var textarea = textarea.replace(re, subst);
-
-    var re = /(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})↙(?:([^{}()])|\(([^{}()]+)\)|{([^{}()]+)})/g;
-    var subst = '\\underset{$4$5$6}{$1$2$3}';
-    var textarea = textarea.replace(re, subst);
-
-    var re = /"([^"]+)"/g;
-    var subst = '\\text{$1}';
-
-
-
-
-    var textarea = textarea.replace(re, subst);
-    textarea = textarea.replace(/log/g,"\\log");
-    textarea = textarea.replace(/ln/g,"\\ln");
-
+textarea = textarea.replace(binreg("∕"),'\\frac{$1$2}{$3$4}');
+textarea = textarea.replace(binreg("¦"),'\\binom{$1$2}{$3$4}');
+textarea = textarea.replace(binreg("↖"),'\\overset{$3$4}{$1$2}');
+textarea = textarea.replace(binreg("↙"),'\\underset{$3$4}{$1$2}');
+textarea = textarea.replace(/"([^"]+)"/g,'\\text{$1}');
+textarea = textarea.replace(/log/g,"\\log");
+textarea = textarea.replace(/ln/g,"\\ln");
+    textarea = textarea.replace(/sin/g,"\\sin");
+    textarea = textarea.replace(/cos/g,"\\cos");
     var text = textarea.split('');
 for (var index = 0; index < text.length; index++) {
        if (text[index] === "⁅") {

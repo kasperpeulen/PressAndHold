@@ -7,7 +7,7 @@ var unicode_to_latex = {
   "¦": "\\choose ",
   '❴': "\\{",
   '❵': "\\}",
-  "≝": "\\stackrel{\\tiny\\text{def}}{=}",
+  "≝": "\\stackrel{\\small\\text{def}}{=}",
   '≞': "\\stackrel{\\text{m}}{=}",
   '≟': "\\stackrel{\\text{?}}{=}",
   '⅀': '\\Bbb{\\Sigma}',

@@ -6,8 +6,10 @@
             
             <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
             <script src="unicode2latex.js"></script>
-            <script src="script.js"></script>
-
+<script src="plugins.js"></script>
+            <script src="longpress.js"></script>
+<script src="app.js"></script>
+    <script src="textareahelper.js"></script>
 
             <script type="text/x-mathjax-config">
 
@@ -36,8 +38,8 @@
                 MathJax.Hub.Register.StartupHook("TeX Jax Ready", function() {
                                                  var TEX = MathJax.InputJax.TeX;
                                                  var MACROS = {
-                                                 "(" : "\\left(",
-                                                 ")" : "\\right)",
+                                               //  "(" : "\\left(",
+                                               //  ")" : "\\right)",
                                                  "❴" :"\\{",
                                                  "❵" :"\\}",
                                                  "√": ["\\sqrt{#1}", 1],
