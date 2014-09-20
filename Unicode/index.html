@@ -232,8 +232,8 @@
                 </script>
             <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML-full">
                 </script>
-    <script type="text/x-mathjax-config">
- </script>
+
+    <script src="ctex_to_tex.js"></script>
             <script type="text/javascript">
                 function escapeRegExp(string) {
                     return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
@@ -249,136 +249,11 @@
                   }
                   $('body').keyup(function() {
                       //$('#latex').val($('#ta').val());
+
                       if (true) {
-                          $('#latex').val($('#ta').val());
-
-                          var textarea = $('#latex').val();
-                          var re = /(_)([^\s{]+?)(\^)([^\s{]+?)( )/g;
-                          var m;
-                          while ((m=re.exec(textarea)) != null) {
-                              if (m.index === re.lastIndex) {
-                                  re.lastIndex++;
-                              }
-                              textarea = textarea.replace(m[0], m[1] + "{" + m[2] + "}" + m[3] + "{" + m[4] + "} ");
-                          }
-                          var re = /([^}]{1})(↙)([^{]{1})/g;
-                          var m;
-                          while ((m=re.exec(textarea)) != null) {
-                              if (m.index === re.lastIndex) {
-                                  re.lastIndex++;
-                              }
-                              console.log(m);
-                              textarea = textarea.replace(m[0],"\\underset{"+m[3]+"}{"+m[1]+"}");
-                          }
-                          var re = /({)([^\s{}]+?)(})(↙)({)([^\s{}]+?)(})/g;
-                          var m;
-                          while ((m=re.exec(textarea)) != null) {
-                              if (m.index === re.lastIndex) {
-                                  re.lastIndex++;
-                              }
-                              console.log(m);
-                              textarea = textarea.replace(m[0],"\\underset"+m[5]+m[6]+m[7]+m[1]+m[2]+m[3]);
-                          }
-                          var re = /([^}]{1})(↖)([^{]{1})/g;
-                          var m;
-                          while ((m=re.exec(textarea)) != null) {
-                              if (m.index === re.lastIndex) {
-                                  re.lastIndex++;
-                              }
-                              console.log(m);
-                              textarea = textarea.replace(m[0],"\\overset{"+m[3]+"}{"+m[1]+"}");
-                          }
-                          var re = /({)([^\s{}]+?)(})(↖)({)([^\s{}]+?)(})/g;
-                          var m;
-                          while ((m=re.exec(textarea)) != null) {
-                              if (m.index === re.lastIndex) {
-                                  re.lastIndex++;
-                              }
-                              console.log(m);
-                              textarea = textarea.replace(m[0],"\\overset"+m[5]+m[6]+m[7]+m[1]+m[2]+m[3]);
-                          }
-                          var text = textarea.split('');
-                          for (var index = 0; index < text.length; index++) {
-                              if (text[index] === "∕") {
-                                  if (text[index-1] == "}")   {
-                                      var sub=  textarea.substring(0,index)
-                                      var startindex = sub.lastIndexOf("{");
-                                      text[startindex] = "\\frac" + text[startindex];
-                                      text[index]="";
-                                  }
-                                  else if (text[index-1] == ")") {
-                                      text[index-1] = "}"
-                                      var sub=  textarea.substring(0,index)
-                                      var startindex = sub.lastIndexOf("(");
-                                      text[startindex] = "\\frac{" ;
-                                      text[index]="";
-                                  }
-                                  else {
-                                      text[index - 1] = "\\frac{" + text[index - 1] + "}";
-                                      text[index]="";
-                                  }
-
-                                  if (text[index+1] == "(") {
-                                      text[index+1] = "{"
-                                      var sub=  textarea.substring(index);
-                                      var endindex = sub.indexOf(")");
-                                      console.log(sub,endindex);
-                                      text[index+ endindex] = "}" ;
-                                  }
-
-                                  else if (text[index+1] !== "{") {
-                                      text[index +1] = "{"+ text[index+1] +"}";
-                                  }
-
-                                  $('#latex').val(text.join(''));
-                              }
-                              else if (text[index] === "⁅") {
-                                  var sub=  textarea.substring(index);
-                                  var endindex = sub.indexOf("⁆");
-                                  var endindex2 = sub.indexOf("⁅");
-                                  if (endindex !==-1 &&  endindex2 < endindex) {
-                                      var innermath = sub.substring(0, endindex);
-                                      console.log(index,endindex,textarea,sub,innermath,innermath.indexOf("&"));
-                                      if (innermath.indexOf("&") !== -1 ){
-
-                                          text[index+endindex]= "\\end{align*}" ;
-                                          text[index]= "\\begin{align*}" ;
-                                      }
-                                      else if (innermath.indexOf("\\\\") !== -1 ){
-
-
-                                          text[index+endindex]= "\\end{gather*}" ;
-                                          text[index]= "\\begin{gather*}" ;
-                                      }
-                                      else if (innermath.indexOf("((") !== -1 ){
-                                          text[index+endindex]= "``" ;
-                                          text[index]= "``" ;
-
-
-                                      }
-                                  }
-
-                              }
-                              $('#latex').val(text.join(''));
-                          }
-
-                          for (var a in unicode_to_latex) {
-                              if (/[\u0300-\u036e\u1dc0-\u1dfe\u20d0-\u20fe\ufe20-\ufe2e]/.test(a)) {
-                                  var newstr = unicode_to_latex[a];
-                                  var textarea = $('#latex').val();
-                                  var index = textarea.indexOf(a);
-                                  if (index !== -1) {
-                                      var text = textarea.split('');
-                                      text[index] = "{" + text[index - 1] + "}";
-                                      text[index - 1] = a;
-                                      $('#latex').val(text.join(''));
-                                  }
-                              }
-
-
-                              $('#latex').val(replaceAll($('#latex').val(),a, unicode_to_latex[a]));
-                          }
-                      }                  function makePreview() {
+                        ctex_to_tex();
+                      }
+                      function makePreview() {
                           input = $('#latex').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
                           $('#preview').html(input);
                           MathJax.Hub.Queue(["Typeset", MathJax.Hub, "preview"]);

@@ -817,7 +817,6 @@ var unicode_to_latex = {
   "\u2193": "\\downarrow ",
   "\u2194": "\\leftrightarrow ",
   "\u2195": "\\updownarrow ",
-  "\u2196": "\\nwarrow ",
   "\u2197": "\\nearrow ",
   "\u2198": "\\searrow ",
   "\u219A": "\\nleftarrow ",
