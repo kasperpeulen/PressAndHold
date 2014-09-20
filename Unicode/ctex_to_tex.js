@@ -88,5 +88,8 @@ for (var a in unicode_to_latex) {
     textarea = textarea.replace(/(?:\^\d+)+/g, function($1) {
         return "^{"+$1.replace(/\^/g,"")+"}";
     });
+    textarea = textarea.replace(/(?:_\d+)+/g, function($1) {
+        return "_{"+$1.replace(/_/g,"")+"}";
+    });
     $('#latex').val(textarea);
 }
