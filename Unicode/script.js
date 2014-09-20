@@ -38,7 +38,7 @@ strVar += "-webkit-box-shadow: 0px 1px 3px 1px lightgray;";
 strVar += "box-shadow: 0px 2px 3px 0px lightgrey;";
 strVar += "  font-family: 'LMMath-bbfix',STIXGeneral,Cambria Math, Helvetica,Consolas , DejaVu Sans, Symbola, Quivira, Segoe UI Symbol, UniversaliaPlus, Menlo,Monaco,Lucida Console , h ,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;";
 strVar += "	position: relative;";
-strVar += "	top:20px;";
+strVar += "	top:24px;";
 strVar += "	left:-19px;";
 strVar += "	padding: 2px;";
 strVar += "	margin: 0px;";
@@ -88,6 +88,14 @@ $(document).ready(function() {
     var tail = $('<div class="tail" style="position: absolute; z-index:1000;"></div> ');
     $('body').append(tail);
     $('head').append(strVar);
+    $("#checkbox").change(function() {
+        if(! this.checked) {
+            $('#latex').css('display','none');
+        }
+        else {
+            $('#latex').css('display','inline');
+        }
+    });
 });
 var typedChar;
 (function($) {
