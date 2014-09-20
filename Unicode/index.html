@@ -243,12 +243,19 @@
                                       if (text[index] === "∕") {
                                           if (text[index-1] !== "}") {
                                               text[index - 1] = "\\frac{" + text[index - 1] + "}";
+                                              text[index]="";
+                                          }
+                                          else {
+                                              var sub=  textarea.substring(0,index)
+                                              var startindex = sub.lastIndexOf("{");
+                                              text[startindex] = "\\frac" + text[startindex];
+                                              text[index]="";
                                           }
                                           if (text[index+1] !== "{") {
                                               text[index +1] = "{"+ text[index+1] +"}";
-                                              text[index]="";
-                                              $('#latex').val(text.join(''));
                                           }
+
+                                          $('#latex').val(text.join(''));
                                       }
                                   }
                               }
