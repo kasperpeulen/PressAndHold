@@ -14,7 +14,7 @@ while ((m=re.exec(textarea)) != null) {
     textarea = textarea.replace(m[0], m[1] + "{" + m[2] + "}" + m[3] + "{" + m[4] + "} ");
 }
 
-var re = /(?:([^{}()[]])|[\(\[\{](.+)[\)\]\}])∕(?:([^{}()[]])|[\(\[\{](.+)[\)\]\}])/g;
+var re = /(?:([^{}()\[\]])|[\(\[\{](.+)[\)\]\}])∕(?:([^{}()\[\]])|[\(\[\{](.+)[\)\]\}])/g;
 var subst = '\\frac{$1$2}{$3$4}';
 var textarea = textarea.replace(re, subst);
 
