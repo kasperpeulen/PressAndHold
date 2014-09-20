@@ -186,7 +186,14 @@ var typedChar;
                 e.preventDefault();
             }
         });
+
         function onKeyDown(e) {
+            activeElement = e.target;
+            var font = $(activeElement).css('font-family');
+            var hasSTIX = /STIX/g.test(font);
+            if (!hasSTIX) {
+                $(activeElement).css('font-family', font + "Cambria Math, STIXGeneral,Latin Modern Roman");
+            }
             if ($('.long-press-popup').length <= 0) {
                 keyup = false;
                 count += 1;
@@ -231,6 +238,14 @@ var typedChar;
                     var textAreaTxt = $(activeElement).val();
                     var caretPos = getCaretPosition(activeElement);
                     $(activeElement).val(textAreaTxt.substring(0, caretPos) + '`' + textAreaTxt.substring(caretPos));
+                    setCaretPosition(activeElement, caretPos + 1);
+                }
+                if (e.which == 54 && e.shiftKey === true && ($('.long-press-popup').length <= 0)) {
+                    e.preventDefault();
+                    activeElement = e.target;
+                    var textAreaTxt = $(activeElement).val();
+                    var caretPos = getCaretPosition(activeElement);
+                    $(activeElement).val(textAreaTxt.substring(0, caretPos) + '^' + textAreaTxt.substring(caretPos));
                     setCaretPosition(activeElement, caretPos + 1);
                 }
                 var oldcount = count;
@@ -392,7 +407,7 @@ var typedChar;
             });
             /*
 
-*/
+             */
             selectedCharIndex = -1;
         }
 
@@ -487,5 +502,3 @@ var typedChar;
             });
         };
     }(jQuery, window));
-
-
