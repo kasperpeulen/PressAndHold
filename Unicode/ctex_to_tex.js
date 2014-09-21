@@ -3,7 +3,6 @@
  */
 var ctex_to_tex = function (){
 $('#latex').val($('#ta').val());
-
 var textarea = $('#latex').val();
 var re = /(_)([^\s{]+?)(\^)([^\s{]+?)( )/g;
 var m;
@@ -57,13 +56,12 @@ for (var index = 0; index < text.length; index++) {
         }
 
     }
-    $('#latex').val(text.join(''));
+    textarea = text.join('');
 }
 
 for (var a in unicode_to_latex) {
+    var newstr = unicode_to_latex[a];
     if (/[\u0300-\u036e\u1dc0-\u1dfe\u20d0-\u20fe\ufe20-\ufe2e]/.test(a)) {
-        var newstr = unicode_to_latex[a];
-        var textarea = $('#latex').val();
         var index = textarea.indexOf(a);
         if (index !== -1) {
             var text = textarea.split('');
@@ -72,11 +70,8 @@ for (var a in unicode_to_latex) {
             $('#latex').val(text.join(''));
         }
     }
-
-
-    $('#latex').val(replaceAll($('#latex').val(),a, unicode_to_latex[a]));
-
-
+    var reg = new RegExp (a,"g");
+    textarea = textarea.replace(reg,newstr);
 }
     textarea = textarea.replace(/(?:\^\d+)+/g, function($1) {
         return "^{"+$1.replace(/\^/g,"")+"}";
