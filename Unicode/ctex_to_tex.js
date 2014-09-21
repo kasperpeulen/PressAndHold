@@ -22,11 +22,8 @@ var ctex_to_tex = function (){
     textarea = textarea.replace(binreg("¦"),'\\binom{$1$2}{$3$4}');
     textarea = textarea.replace(binreg("↖"),'\\overset{$3$4}{$1$2}');
     textarea = textarea.replace(binreg("↙"),'\\underset{$3$4}{$1$2}');
-    textarea = textarea.replace(/"([^"]+)"/g,'\\text{$1}');
-    textarea = textarea.replace(/log/g,"\\log");
-    textarea = textarea.replace(/ln/g,"\\ln");
-    textarea = textarea.replace(/sin/g,"\\sin");
-    textarea = textarea.replace(/cos/g,"\\cos");
+
+
     var text = textarea.split('');
     for (var index = 0; index < text.length; index++) {
         if (text[index] === "⁅") {
@@ -79,5 +76,9 @@ var ctex_to_tex = function (){
     textarea = textarea.replace(/(?:_\d+)+/g, function($1) {
         return "_{"+$1.replace(/_/g,"")+"}";
     });
+    textarea = textarea.replace(/""([^""]+)""/g,'\\mathop{\\mathrm{$1}}');
+    textarea = textarea.replace(/"([^"]+)"/g,'\\text{$1}');
+    textarea = textarea.replace(/(^|[^\\])(sin|cos|tan|csc|sec|cot|sinh|cosh|tanh|log|ln|det|dim|lim|mod|gcd|lcm|min|max)( |\(|\[|\{|\^)/g, '$1\\$2$3');
+
     $('#latex').val(textarea);
 }
