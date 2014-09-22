@@ -2,19 +2,22 @@ body{
   font-family:Georgia,"Times New Roman",Times,serif;
   font-size:14px;
 }
-#ta {
+#ta, #latex {
 	width: 500px;
 	height: 200px;
-	font-size: 18px;
+	font-size: 16px;
 	padding:5px;
 font-family: "LMMath-bbfix", Cambria Math,  STIXGeneral,Consolas,  DejaVu Sans, Symbola, Quivira, Segoe UI Symbol, UniversaliaPlus, Menlo,Monaco,Lucida Console , h ,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif,"Latin Modern Math";
 }
 
+#latex {
+    display:none;
+}
 #preview{
-font-family:"LMMath-bbfix", Cambria Math,STIXGeneral,Georgia,Times New Roman",Times,serif,"Latin Modern Math";
-  font-size:13pt;
+    font-family: "Latin Modern Roman","LMMath-bbfix", Cambria Math,  STIXGeneral,Consolas,  DejaVu Sans, Symbola, Quivira, Segoe UI Symbol, UniversaliaPlus, Menlo,Monaco,Lucida Console , h ,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif,"Latin Modern Math";
+    font-size: 16px;
 }
 @font-face {
     font-family: LMMath-bbfix;
-    src: url(http://kasperpeulen.github.io/PressAndHold/LMMath-bbfix.otf);
+    src: url('LMMath-bbfix.otf');
 }
