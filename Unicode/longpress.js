@@ -115,7 +115,7 @@ var typedChar;
         document = window.document,
         defaults = {};
     var moreChars = {
-        'A': '∀{𝒜}{𝔄}',
+        'A': '{𝐴}∀{𝒜}{𝔄}',
         'B': 'ℬ{𝔅}',
         'C': 'ℂ{𝒞}∐',
         'D': '{𝒟}{𝔇}Δ∩',
@@ -131,30 +131,30 @@ var typedChar;
         'N': 'ℕℵ{𝒩}{𝔑}',
         'O': 'Ω{𝒪}⊕⊖⊗⊘⊙⊚⊛⊜⊝',
         'P': '∏ΠΦΨℙ{𝒫}',
-        'Q': 'ℚ{𝒬}∎',
+        'Q': 'ℚ{𝑄}{𝒬}∎',
         'R': 'ℝℛ',
         'S': '∑Σ{𝒮}⅀',
         'T': '⊤⊥⊢⊣⊧⊨⊩{𝒯}',
-        'U': '{𝒰}∪∩⊔⊓⋃⋂⨆⨅',
-        'V': '{𝒱}Ʋ',
+        'U': '{𝑈}{𝒰}∪∩⊔⊓⋃⋂⨆⨅',
+        'V': '{𝑉}{𝒱}Ʋ',
         'W': '{𝒲}',
         'X': 'Ξ{𝒳}⨉',
         'Y': '{𝒴}',
         'Z': 'ℤ{𝒵}',
-        'a': 'α∀∧∠{𝔞}',
-        'b': 'β{𝔟}',
+        'a': 'α{𝑎}∀∧∠{𝔞}',
+        'b': 'β{𝑏}{𝔟}',
         'c': 'χ{𝔠}↯∮',
         'd': 'δ{𝔡}∂º∬',
         'e': 'ϵε∃∄∅',
         'f': 'ϕφ',
         'g': 'γ{𝔤}',
         'h': 'η{𝔥}†♡♥',
-        'i': '∈∉ι∫∞∋∌∩',
+        'i': 'ᵢ∈∉ι∫∞∋∌∩',
         'j': '{𝔧}',
-        'k': 'ₖκ',
-        'l': 'λℓ',
-        'm': 'μ{𝔪}',
-        'n': 'ⁿν{𝔫}¬∇',
+        'k': 'ₖ{𝑘}κ',
+        'l': 'λℓ{𝔩}',
+        'm': 'ₘμ{𝔪}',
+        'n': 'ₙⁿν{𝔫}¬∇',
         'o': 'ω{𝔬}∨°',
         'p': 'πϕφψ{𝔭}',
         'q': '{𝔮}∎',
@@ -179,17 +179,24 @@ var typedChar;
         '~': '\u0303\u0330',
         '"': '\u0308\u20db\u20dc\u20e8\u20e1\u20e7\u20e9\u0331',
         '_': '↙₋▁\u23DF', //┬⏝⎵
-        '{': '❴⟨⌈⌊⟪⟦⦇⦉',
-        '}': '❵⟩⌉⌋⟫⟧⦈⦊',
-        '[': '⁅❴⟨⌈⌊⟮⟪⟦⦇⦉',
-        ']': '⁆❵⟩⌉⌋⟯⟫⟧⦈⦊',
-        '(' : '{􏿱}{􏿳}{􏿵}{􏿷}',
-        ')' : '{􏿲}{􏿴}{􏿶}{􏿸}',
+        '{': //{􀀀}
+         "{􀀁}{􀀂}{􀀃}{􀀄}", //{􀀅}{􀀆}",//'❴⟨⌈⌊⟪⟦⦇⦉',
+        '}': //"{􀀇}
+        "// {􀀈}{􀀉}{􀀊}{􀀋}",//{􀀌}{􀀍}",//'❵⟩⌉⌋⟫⟧⦈⦊',
+        '[': //"{􀀐}
+        "⁅{􀀑}{􀀒}{􀀓}{􀀔}",//{􀀕}{􀀖}",//'⁅❴⟨⌈⌊⟮⟪⟦⦇⦉',
+        ']': //"{􀀗}
+        "⁆{􀀘}{􀀙}{􀀚}{􀀛}",//{􀀜}{􀀝}",//'⁆❵⟩⌉⌋⟯⟫⟧⦈⦊',
+        '(' : //'{􀀡}
+        "{􀀢}{􀀣}{􀀤}{􀀥}",//{􀀦}{􀀧}',
+        ')' : //'{􀀨}
+        "{􀀩}{􀀪}{􀀫}{􀀬}",//{􀀭}{􀀮}',
         '|': '∣∤∥∦',
         '\\': '∖',
         '/': '∕÷¦',
         '<': '≤⟨⊆⊂←↤⇐⊲',
-        '>': '≥⟩⊇⊃→↦⇒⟹⊳',
+        '>': '≥⟩⊇⊃→↦⇒⟹⊳\u27F5',
+        '->': '→↦⇒⟹\u27F6',
         '=': '\u208C≠≈≅≃≡⟺⇔≟≝≔≞⇕\u207C',
         '1': '₁¹',
         '2': '₂²',
@@ -203,7 +210,7 @@ var typedChar;
         '0': '₀⁰',
         '*': '·∘∙⋄×⨉⊗⊙⨀',
         '^': '↖\u0302\u030C\u20d7\u0306', //┴,
-        ' ' : '\u2009\u205f\u2005\u2003{\u2003\u2003}'
+        ' ' : '\u00A0\u2009\u205f\u2005\u2003{\u2003\u2003}'
     };
     var ignoredKeys = [8, 13, 37, 38, 39, 40];
     var selectedCharIndex;
@@ -242,6 +249,19 @@ var typedChar;
             count += 1;
             if (e.which == 8 || e.which == 16 || e.which == 17 || e.which == 18 || e.which == 20 || e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40 || e.which == 16) {
                 return;
+            }
+            if (e.which == 9) {
+                e.preventDefault();
+                activeElement = e.target;
+                var textAreaTxt = $(activeElement).val();
+                var caretPos = getCaretPosition(activeElement);
+                var newCaretPos = textAreaTxt.substring(caretPos-1).indexOf("⁆") + caretPos;
+                if ( newCaretPos ===textAreaTxt.length ){
+                    textAreaTxt += " ";
+                }
+
+                $(activeElement).val(textAreaTxt);
+                setCaretPosition(activeElement, newCaretPos+1);
             }
             if (e.which == 32) {
                 e.preventDefault();
@@ -384,7 +404,14 @@ var typedChar;
     }
 
     function onTimer() {
-        typedChar = $(activeElement).val().split('')[getCaretPosition(activeElement) - 1];
+        var text = $(activeElement).val().split('');
+        var caretPos = getCaretPosition(activeElement);
+        typedChar = text[caretPos- 1];
+        if (typedChar === ">"){
+            if( text[caretPos-2] === "-" ||text[caretPos-2] === "=" ){
+            typedChar = "->";
+            }
+        }
         if (moreChars[typedChar]) {
             showPopup((moreChars[typedChar]));
         } else {}
@@ -392,7 +419,7 @@ var typedChar;
 
     function showPopup(chars) {
         popup.empty();
-        oldCharlength = 1;
+        oldCharlength = typedChar.length;
         $('.tail').on('click', function(e) {
             e.preventDefault();
         });
@@ -501,9 +528,10 @@ var typedChar;
             newChar = typedChar;
         }
         else {
-        var endString = $('.long-press-letter.selected').html().indexOf("<");
-        var newChar = $('.long-press-letter.selected').html().substring(0, endString);
+        var endString = $('.long-press-letter.selected').text().indexOf((i+1).toString());
+        var newChar = $('.long-press-letter.selected').text().substring(0, endString);
         }
+
         var pos = getCaretPosition(activeElement);
         var arVal = $(activeElement).val().split('');
         if (newChar.length == 2 && (oldCharlength == 1 || arVal[pos - 1] == typedChar)) {

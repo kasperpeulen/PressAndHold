@@ -127,7 +127,7 @@ var ctex_to_tex = function (){
 
             before = before.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
             after = after.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-
+            console.log(before,after);
             var re = new RegExp("[{(\\[]?(" + before + ")[})\\]]?∕[{(\\[]?(" + after + ")[\\]})]?", "g");
             textarea = textarea.replace(re, "\\frac{$1}{$2}");
             text = textarea.split('');
@@ -172,7 +172,17 @@ var ctex_to_tex = function (){
         "\u208D": "_{(}",
         "\u208E": "_{)}",
         "ₓ" : "_{x}",
-        "ₖ"   :"_{k}"
+        "ₖ"   :"_{k}",
+        "ₙ" : "_{n}",
+        "ₘ" : "_{m}",
+        "ᵢ" : "_{i}",
+        "𝐴": "\\(A\\)",
+        "𝑈": "\\(U\\)",
+        "𝑉": "\\(V\\)",
+        "𝑄" : "\\(Q\\)",
+        "𝑎" :"\\(a\\)",
+        "𝑏" :"\\(b\\)",
+        "𝑘": "\\(k\\)"
     }
     for (a in subscripts){
         var reg = new RegExp (a,"g");
@@ -185,10 +195,14 @@ var ctex_to_tex = function (){
     textarea = textarea.replace(/(?:_\{[\dnkx\=\→\-]\}+)+/g, function($1) {
         return "_{"+$1.replace(/_\{/g,"").replace(/\}/g,"")+"}";
     });
+
+    textarea = textarea.replace(/(_)([^\s{}]*?)(\s|\^|⁆|\$)/g,'$1{$2}$3');
+    textarea = textarea.replace(/(\^)([^\s{}]*?)(\s|\_|⁆|\$)/g,'$1{$2}$3');
+
     textarea = textarea.replace(/"(\w+)"(\(|\[|\{)/g,'\\mathop{\\mathrm{$1}}$2');
     textarea = textarea.replace(/"([^"]+)"/g,'\\text{$1}');
 
-    textarea = textarea.replace(/^⁅(.*?)⁆/gm,"\\[$1\\]");
+    textarea = textarea.replace(/^⁅([^⁅⁆]*?)⁆$/gm,"\\[$1\\]");
     textarea = textarea.replace(/√(?:\s*?)(\S_{.*?})/g,'\\sqrt{$1}');
 
     for (var a in unicode_to_latex) {

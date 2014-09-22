@@ -16,6 +16,7 @@ font-family: "LMMath-bbfix", Cambria Math,  STIXGeneral,Consolas,  DejaVu Sans, 
 #preview{
     font-family: "Latin Modern Roman","LMMath-bbfix", Cambria Math,  STIXGeneral,Consolas,  DejaVu Sans, Symbola, Quivira, Segoe UI Symbol, UniversaliaPlus, Menlo,Monaco,Lucida Console , h ,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif,"Latin Modern Math";
     font-size: 16px;
+    width: 500px;
 }
 @font-face {
     font-family: LMMath-bbfix;
