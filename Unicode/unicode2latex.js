@@ -137,7 +137,7 @@ var unicode_to_latex = {
    "\u00A9": "\\textcopyright ",
    "\u00AA": "\\textordfeminine ",
    "\u00AB": "\\guillemotleft ",  */
-    "\u00A0" : "\\space",
+    "\u00A0" : "\\space ",
   "\u00AC": "\\lnot ",
   "\u00AD": "\\-",
   "\u00AE": "\\textregistered ",
