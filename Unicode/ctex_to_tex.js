@@ -177,6 +177,7 @@ var ctex_to_tex = function (){
         "ₘ" : "_{m}",
         "ᵢ" : "_{i}",
         "𝐴": "\\(A\\)",
+        "𝐼":"\\(I\\)",
         "𝑆":"\\(S\\)",
         "𝑈": "\\(U\\)",
         "𝑉": "\\(V\\)",
@@ -214,7 +215,7 @@ var ctex_to_tex = function (){
                 var text = textarea.split('');
                 text[index] = "{" + text[index - 1] + "}";
                 text[index - 1] = a;
-                $('#latex').val(text.join(''));
+                textarea = text.join('');
             }
         }
         var reg = new RegExp (a,"g");

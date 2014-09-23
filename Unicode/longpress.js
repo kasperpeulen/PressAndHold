@@ -109,7 +109,7 @@ $(document).ready(function() {
     });
 });
 var typedChar;
-
+var activeElement;
 (function($, window, undefined) {
     var pluginName = 'longPress',
         document = window.document,
@@ -123,7 +123,7 @@ var typedChar;
         'F': 'ℱ',
         'G': 'Γ{𝒢}{𝔊}∇∠∟⟂∥∦∝⊿⊾⦜⦝',
         'H': 'ℋ',
-        'I': 'ℐℑ∩∫∬∭⨌∮∯∰',
+        'I': '{𝐼}ℐℑ∩∫∬∭⨌∮∯∰',
         'J': '{𝒥}{𝔍}',
         'K': '{𝒦}{𝔎}',
         'L': 'ℒ{𝔏}¬∀∃∄∴∵∧∨⊨⊭⋀⋁',
@@ -216,7 +216,7 @@ var typedChar;
     var selectedCharIndex;
     var lastWhich;
     var timer;
-    var activeElement;
+
     var keyup;
     var count = 0;
     var oldCharlength;

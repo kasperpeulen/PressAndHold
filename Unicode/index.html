@@ -195,7 +195,7 @@
                 });
                 MathJax.Hub.Config({
                                    "HTML-CSS": {
-                                    availableFonts: [], preferredFont: 'TeX', // force Web fonts
+                                    availableFonts: [], preferredFont: null, // force Web fonts
                                     webFont: "Latin-Modern",
                                     undefinedFamily: "Cambria Math,STIXGeneral, 'Arial Unicode MS', serif",
                                     
@@ -235,6 +235,7 @@
             <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML-full">
                 </script>
 
+    <script src="tex_to_ctex.js"></script>
     <script src="ctex_to_tex.js"></script>
             <script type="text/javascript">
                 function escapeRegExp(string) {
@@ -253,6 +254,7 @@
                       //$('#latex').val($('#ta').val());
 
                       if (true) {
+                        tex_to_ctex();
                         ctex_to_tex();
                       }
                       function makePreview() {
