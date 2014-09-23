@@ -4,22 +4,17 @@
 var ctex_to_tex = function (){
     $('#latex').val($('#ta').val());
     var textarea = $('#latex').val();
-    var re = /(_)([^\s{]+?)(\^)([^\s{]+?)( )/g;
-    var m;
-    while ((m=re.exec(textarea)) != null) {
-        if (m.index === re.lastIndex) {
-            re.lastIndex++;
-        }
-        textarea = textarea.replace(m[0], m[1] + "{" + m[2] + "}" + m[3] + "{" + m[4] + "} ");
-    }
 
     var binreg = function (symbol){
-        var reg = new RegExp("(?:([^{}()\\[\\]])|[\\(\\[\\{](.*?)[\\)\\]\\}])"+symbol+"(?:([^{}\\(\\)\\[\\]])|[\\(\\[\\{](.*?)[\\)\\]\\}])","g");
+        var reg = new RegExp("(?:([^{}()\\[\\]])|[\\(\\[\\{]([^[\\]()]*?)[\\)\\]\\}])"+symbol+"(?:([^{}\\(\\)\\[\\]])|[\\(\\[\\{]([^()[\\]]*?)[\\)\\]\\}])","g");
         return reg;
     }
 
-    textarea = textarea.replace(binreg("∕"),'\\frac{$1$2}{$3$4}');
-    textarea = textarea.replace(binreg("∕"),'\\frac{$1$2}{$3$4}');
+
+
+    while (binreg("∕").test(textarea)){
+        textarea = textarea.replace(binreg("∕"),'\\frac{$1$2}{$3$4}');
+    }
     textarea = textarea.replace(binreg("¦"),'\\binom{$1$2}{$3$4}');
     textarea = textarea.replace(binreg("↖"),'\\overset{$3$4}{$1$2}');
     textarea = textarea.replace(binreg("↙"),'\\underset{$3$4}{$1$2}');
@@ -27,6 +22,7 @@ var ctex_to_tex = function (){
 
     var text = textarea.split('');
     for (var index = 0; index < text.length; index++) {
+        var i =index;
         if (text[index] === "⁅") {
             var sub=  textarea.substring(index);
             var endindex = sub.indexOf("⁆");
@@ -71,15 +67,15 @@ var ctex_to_tex = function (){
         var reg = new RegExp (a,"g");
         textarea = textarea.replace(reg,newstr);
     }
-    textarea = textarea.replace(/(?:\^\d+)+/g, function($1) {
+    textarea = textarea.replace(/(?:\^[\d\w\=\+\-]+)+/g, function($1) {
         return "^{"+$1.replace(/\^/g,"")+"}";
     });
-    textarea = textarea.replace(/(?:_\d+)+/g, function($1) {
+    textarea = textarea.replace(/(?:_[\d\w\=\+\-]+)+/g, function($1) {
         return "_{"+$1.replace(/_/g,"")+"}";
     });
     textarea = textarea.replace(/"(\w+)"(\(|\[|\{)/g,'\\mathop{\\mathrm{$1}}$2');
     textarea = textarea.replace(/"([^"]+)"/g,'\\text{$1}');
     textarea = textarea.replace(/(^|[^\\])(sin|cos|tan|csc|sec|cot|sinh|cosh|tanh|log|ln|det|dim|lim|mod|gcd|lcm|min|max)( |\(|\[|\{|\^)/g, '$1\\$2$3');
-
+    a.ch
     $('#latex').val(textarea);
 }
