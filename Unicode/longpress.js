@@ -110,6 +110,7 @@ $(document).ready(function() {
 });
 var typedChar;
 var activeElement;
+
 (function($, window, undefined) {
     var pluginName = 'longPress',
         document = window.document,
