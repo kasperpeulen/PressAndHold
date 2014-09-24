@@ -103,6 +103,8 @@ var ctex_to_tex = function (){
     textarea = textarea.replace(/"([^"]+)"/g,'\\text{$1}');
 
     textarea = textarea.replace(/^⁅(.*?)⁆/gm,"\\[$1\\]");
+    textarea = textarea.replace(/√(?:\s*?)(\S_{.*?})/g,'\\sqrt{$1}');
+
     for (var a in unicode_to_latex) {
         var newstr = unicode_to_latex[a];
         if (/[\u0300-\u036e\u1dc0-\u1dfe\u20d0-\u20fe\ufe20-\ufe2e]/.test(a)) {
