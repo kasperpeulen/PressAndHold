@@ -7,7 +7,12 @@ var unicode_to_latex = {
   "¦": "\\choose ",
   '❴': "\\{",
   '❵': "\\}",
-   "ₓ" : "_x",
+    '􏿱' :'\\big(',
+    '􏿳' :'\\Big(',
+    '􏿲' : '\\big)',
+    '􏿴' : '\\Big)',
+    'asdfsd' : '{}{}{􏿵}{􏿷}',
+    'fasdfasf' : '{}{}{􏿶}{􏿸}',
   "≝": "\\stackrel{\\small\\text{def}}{=}",
   '≞': "\\stackrel{\\text{m}}{=}",
   '≟': "\\stackrel{\\text{?}}{=}",
@@ -903,7 +908,7 @@ var unicode_to_latex = {
   "\u2222": "\\sphericalangle ",
   "\u2223": "\\mid ",
   "\u2224": "\\nmid ",
-  "\u2225": "\\parallel ",
+  "\u2225": "\\| ",
   "\u2226": "\\nparallel ",
   "\u2227": "\\wedge ",
   "\u2228": "\\vee ",
@@ -2470,7 +2475,9 @@ var unicode_to_latex = {
     "\uD835\uDC52":"\\(e\\)",
     "\uD835\uDC53":"\\(f\\)",
     "\uD835\uDC54":"\\(g\\)",
-    "\uD835\uDC56":"\\(i\\)"
+    "\uD835\uDC56":"\\(i\\)",
+    "{𝑥}" : "\\(x\\)",
+    "{𝑦}": "\\(y\\)"
 
 
 };
