@@ -119,14 +119,15 @@ var ctex_to_tex = function (){
                 after = "";
             }
             else {
-                after = text[i+1];
+
+                after = textarea.substring(1+i).match(/^(?:(\d+)|([^\d]))/g)[0];
+
             }
-            if (before && after) {
+            if ((before||before =="") && (after||after=="")) {
 
             before = before.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
             after = after.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 
-            console.log(before, after);
             var re = new RegExp("[{(\\[]?(" + before + ")[})\\]]?∕[{(\\[]?(" + after + ")[\\]})]?", "g");
             textarea = textarea.replace(re, "\\frac{$1}{$2}");
             text = textarea.split('');
@@ -138,51 +139,51 @@ var ctex_to_tex = function (){
     }
 
     var subscripts = {
-        "\u00B9": "^1",
-        "⁰": "^0",
-        "\u00B2": "^2",
-        "\u00B3": "^3",
-        "\u2071": "^i",
-        "\u2074": "^4",
-        "\u2075": "^5",
-        "\u2076": "^6",
-        "\u2077": "^7",
-        "\u2078": "^8",
-        "\u2079": "^9",
-        "\u207A": "^+",
-        "\u207B": "^-",
-        "\u207C": "^=",
-        "\u207D": "^(",
-        "\u207E": "^)",
-        "\u207F": "^n",
-        "\u2080": "_0",
-        "\u2081": "_1",
-        "\u2082": "_2",
-        "\u2083": "_3",
-        "\u2084": "_4",
-        "\u2085": "_5",
-        "\u2086": "_6",
-        "\u2087": "_7",
-        "\u2088": "_8",
-        "\u2089": "_9",
-        "\u208A": "_+",
-        "\u208B": "_-",
-        "\u208C": "_=",
-        "\u208D": "_(",
-        "\u208E": "_)",
-        "ₓ" : "_x",
-        "ₖ"   :"_k"
+        "\u00B9": "^{1}",
+        "⁰": "^{0}",
+        "\u00B2": "^{2}",
+        "\u00B3": "^{3}",
+        "\u2071": "^{i}",
+        "\u2074": "^{4}",
+        "\u2075": "^{5}",
+        "\u2076": "^{6}",
+        "\u2077": "^{7}",
+        "\u2078": "^{8}",
+        "\u2079": "^{9}",
+        "\u207A": "^{+}",
+        "\u207B": "^{-}",
+        "\u207C": "^{=}",
+        "\u207D": "^{(}",
+        "\u207E": "^{)}",
+        "\u207F": "^{n}",
+        "\u2080": "_{0}",
+        "\u2081": "_{1}",
+        "\u2082": "_{2}",
+        "\u2083": "_{3}",
+        "\u2084": "_{4}",
+        "\u2085": "_{5}",
+        "\u2086": "_{6}",
+        "\u2087": "_{7}",
+        "\u2088": "_{8}",
+        "\u2089": "_{9}",
+        "\u208A": "_{+}",
+        "\u208B": "_{-}",
+        "\u208C": "_{=}",
+        "\u208D": "_{(}",
+        "\u208E": "_{)}",
+        "ₓ" : "_{x}",
+        "ₖ"   :"_{k}"
     }
     for (a in subscripts){
         var reg = new RegExp (a,"g");
         textarea = textarea.replace(reg,subscripts[a]);
     }
 
-    textarea = textarea.replace(/(?:\^[\d\w\=\→]+)+/g, function($1) {
-        return "^{"+$1.replace(/\^/g,"")+"}";
+    textarea = textarea.replace(/(?:\^\{[\dnkx\=\→\-]\}+)+/g, function($1) {
+        return "^{"+$1.replace(/\^\{/g,"").replace(/\}/g,"")+"}";
     });
-    textarea = textarea.replace(/(?:_[\d\w\=\→]+)+/g, function($1) {
-        return "_{"+$1.replace(/_/g,"")+"}";
+    textarea = textarea.replace(/(?:_\{[\dnkx\=\→\-]\}+)+/g, function($1) {
+        return "_{"+$1.replace(/_\{/g,"").replace(/\}/g,"")+"}";
     });
     textarea = textarea.replace(/"(\w+)"(\(|\[|\{)/g,'\\mathop{\\mathrm{$1}}$2');
     textarea = textarea.replace(/"([^"]+)"/g,'\\text{$1}');
@@ -205,7 +206,7 @@ var ctex_to_tex = function (){
         textarea = textarea.replace(reg,newstr);
     }
 
-    textarea = textarea.replace(/(^|[^\\])(sin|cos|tan|csc|sec|cot|sinh|cosh|tanh|log|ln|det|dim|lim|mod|gcd|lcm|min|max)( |\(|\[|\{|\^|_)/g, '$1\\$2$3');
+    textarea = textarea.replace(/(^|[^\\])(sin|cos|arctan|arccos|arcsin|tan|csc|sec|cot|sinh|cosh|tanh|log|ln|det|dim|lim|mod|gcd|lcm|min|max)( |\(|\[|\{|\^|_)/g, '$1\\$2$3');
 
     $('#latex').val(textarea);
 }

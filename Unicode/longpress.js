@@ -202,7 +202,8 @@ var typedChar;
         '9': '₉⁹',
         '0': '₀⁰',
         '*': '·∘∙⋄×⨉⊗⊙⨀',
-        '^': '↖\u0302\u030C\u20d7\u0306' //┴
+        '^': '↖\u0302\u030C\u20d7\u0306', //┴,
+        ' ' : '\u2009\u205f\u2005\u2003{\u2003\u2003}'
     };
     var ignoredKeys = [8, 13, 37, 38, 39, 40];
     var selectedCharIndex;
@@ -404,10 +405,13 @@ var typedChar;
                     title = unicode_to_latex[chars[i]];
                 }
                 letter = $('<li class="long-press-letter" title="' + title + '" />').html(chars[i] + "<span class=\"number\">" + (count + 1) + "</span>");
-                letter.mouseenter(function() {
+
+
+                letter.mousemove(function() {
                     var index = $(this).index();
                     activateLetter(index);
                 });
+
                 popup.append(letter);
                 count += 1;
             } else {
@@ -417,7 +421,7 @@ var typedChar;
                     title = unicode_to_latex[symbol];
                 }
                 letter = $('<li class=long-press-letter  title="' + title + '" />').html(chars[i + 1] + chars[i + 2] + "<span class=\"number\">" + (count + 1) + "</span>");
-                letter.mouseenter(function() {
+                letter.mousemove(function() {
                     var index = $(this).index();
                     activateDouble(index);
                 });
@@ -493,10 +497,12 @@ var typedChar;
 
     function updateChar(i) {
         var caretpostion;
-        var endString = $('.long-press-letter.selected').html().indexOf("<");
-        var newChar = $('.long-press-letter.selected').html().substring(0, endString);
         if (i === -1) {
             newChar = typedChar;
+        }
+        else {
+        var endString = $('.long-press-letter.selected').html().indexOf("<");
+        var newChar = $('.long-press-letter.selected').html().substring(0, endString);
         }
         var pos = getCaretPosition(activeElement);
         var arVal = $(activeElement).val().split('');
